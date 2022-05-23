@@ -26,6 +26,6 @@
   "scripts": {
     "build": "lerna run --scope='@iobridge/*' build",
     "lint": "eslint 'packages/*/src/**/*.ts'",
-    "test": "lerna run --scope='@iobridge/*' test"
+    "test": "mocha --require ts-node/register 'packages/*/src/**/*.spec.ts'"
   }
 }

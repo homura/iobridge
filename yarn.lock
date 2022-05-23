@@ -30,6 +30,20 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@ckb-lumos/bi@0.17.0-rc10":
+  version "0.17.0-rc10"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/bi/-/bi-0.17.0-rc10.tgz#fe53c3611c77a3c29eb13f9c13a2d3027f626c31"
+  integrity sha512-1voj61qyv05LhYhiCRmvMIitPz9O/jE50C47YyrlYjBVXbFuLVeW+w9+sdQyxB60ooDQyqTUXzv2BFs42F2vhQ==
+  dependencies:
+    jsbi "^4.1.0"
+
+"@ckb-lumos/codec@^0.17.0-rc10":
+  version "0.17.0-rc10"
+  resolved "https://registry.yarnpkg.com/@ckb-lumos/codec/-/codec-0.17.0-rc10.tgz#1cfd13545233fb6d725a5eb8006fc7fd6a3407e1"
+  integrity sha512-yPCelxOzDh4Tc7AW5RoQT9NIMNo8NxejYZMrxPF3t/mQKgbFGAFpnfyEBiZEnRWTQT9uWCVQQTh3BTZ9AqO3tQ==
+  dependencies:
+    "@ckb-lumos/bi" "0.17.0-rc10"
+
 "@cspotcode/source-map-consumer@0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@cspotcode/source-map-consumer/-/source-map-consumer-0.8.0.tgz#33bf4b7b39c178821606f669bbc447a6a629786b"
@@ -1746,6 +1760,13 @@
   dependencies:
     "@types/connect" "*"
     "@types/node" "*"
+
+"@types/chai-as-promised@^7.1.5":
+  version "7.1.5"
+  resolved "https://registry.yarnpkg.com/@types/chai-as-promised/-/chai-as-promised-7.1.5.tgz#6e016811f6c7a64f2eed823191c3a6955094e255"
+  integrity sha512-jStwss93SITGBwt/niYrkf2C+/1KTeZCZl1LaeezTlqppAKeoQC7jxyqYuP72sxBGKCIbw7oHgbYssIRzT5FCQ==
+  dependencies:
+    "@types/chai" "*"
 
 "@types/chai@*", "@types/chai@^4.2.21":
   version "4.3.1"
@@ -3517,6 +3538,13 @@ cbor@^5.0.2:
     bignumber.js "^9.0.1"
     nofilter "^1.0.4"
 
+chai-as-promised@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/chai-as-promised/-/chai-as-promised-7.1.1.tgz#08645d825deb8696ee61725dbf590c012eb00ca0"
+  integrity sha512-azL6xMoi+uxu6z4rhWQ1jbdUhOMhis2PvscD/xjLqNMkv3BPPp2JyyuTHOrf9BOosGpNQ11v6BKv/g57RXbiaA==
+  dependencies:
+    check-error "^1.0.2"
+
 chai@^4.2.0:
   version "4.3.6"
   resolved "https://registry.yarnpkg.com/chai/-/chai-4.3.6.tgz#ffe4ba2d9fa9d6680cc0b370adae709ec9011e9c"
@@ -4771,6 +4799,11 @@ eslint-module-utils@^2.7.3:
   dependencies:
     debug "^3.2.7"
     find-up "^2.1.0"
+
+eslint-plugin-chai-friendly@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-chai-friendly/-/eslint-plugin-chai-friendly-0.7.2.tgz#0ebfbb2c1244f5de2997f3963d155758234f2b0f"
+  integrity sha512-LOIfGx5sZZ5FwM1shr2GlYAWV9Omdi+1/3byuVagvQNoGUuU0iHhp7AfjA1uR+4dJ4Isfb4+FwBJgQajIw9iAg==
 
 eslint-plugin-es@^3.0.0:
   version "3.0.1"
@@ -7412,6 +7445,11 @@ js-yaml@4.1.0:
   integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
   dependencies:
     argparse "^2.0.1"
+
+jsbi@^4.1.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/jsbi/-/jsbi-4.3.0.tgz#b54ee074fb6fcbc00619559305c8f7e912b04741"
+  integrity sha512-SnZNcinB4RIcnEyZqFPdGPVgrg2AcnykiBy0sHVJQKHYeaLUvi3Exj+iaPpLnFVkDPZIV4U0yvgC9/R4uEAZ9g==
 
 jsbn@~0.1.0:
   version "0.1.1"
