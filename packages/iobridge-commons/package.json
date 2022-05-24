@@ -9,5 +9,8 @@
   ],
   "scripts": {
     "build": "tsc"
+  },
+  "dependencies": {
+    "@ckb-lumos/codec": "^0.17.0-rc10"
   }
 }
