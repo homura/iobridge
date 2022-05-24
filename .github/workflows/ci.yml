@@ -30,8 +30,8 @@ jobs:
       - name: Run test with hardhat
         run: yarn workspace eth-contracts run test
 
-#      - uses: codecov/codecov-action@v2
-#        with:
-#          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-#          files: ./coverage/cobertura-coverage.xml
-#          verbose: true # optional (default = false)
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          files: ./coverage/cobertura-coverage.xml
+          verbose: true # optional (default = false)

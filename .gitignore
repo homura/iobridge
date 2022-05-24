@@ -4,4 +4,6 @@ coverage
 coverage.json
 packages/*/lib
 
+.nyc_output
+
 .idea
