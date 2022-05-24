@@ -27,6 +27,9 @@ jobs:
       - name: Run test with coverage
         run: yarn test
 
+      - name: Run test with hardhat
+        run: yarn workspace eth-contracts run test
+
 #      - uses: codecov/codecov-action@v2
 #        with:
 #          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
