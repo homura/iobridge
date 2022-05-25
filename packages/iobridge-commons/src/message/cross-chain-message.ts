@@ -26,7 +26,7 @@ export function validateCrossChainMessage(message: string): void {
 }
 
 export function verifyCrossChainMessage(payload: {
-  expectedSignAddress: string;
+  expectedSignerAddress: string;
   signature: string;
   message: string;
 }): boolean {
@@ -37,7 +37,7 @@ export function verifyCrossChainMessage(payload: {
       signature: payload.signature,
     });
 
-    return payload.expectedSignAddress === recoveredAddr;
+    return payload.expectedSignerAddress === recoveredAddr;
   } catch {
     return false;
   }

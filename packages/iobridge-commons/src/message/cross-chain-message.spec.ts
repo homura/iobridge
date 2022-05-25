@@ -36,14 +36,14 @@ describe('sign personalSign', () => {
   it('should verify message', async () => {
     const signature = await signCrossChainMessage(mockEthProvider, MOCK_MESSAGE, MOCK_ETH_ADRESS);
     const result = verifyCrossChainMessage({
-      expectedSignAddress: MOCK_ETH_ADRESS,
+      expectedSignerAddress: MOCK_ETH_ADRESS,
       signature,
       message: JSON.stringify(MOCK_MESSAGE),
     });
     expect(result).true;
 
     const errorResult = verifyCrossChainMessage({
-      expectedSignAddress: MOCK_ETH_ADRESS,
+      expectedSignerAddress: MOCK_ETH_ADRESS,
       signature: 'sometext',
       message: JSON.stringify(MOCK_MESSAGE),
     });
