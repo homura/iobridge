@@ -112,7 +112,60 @@ describe('ShadowERC721', function () {
     await expect(shadow.connect(bob).setBaseURI('https://hacked-by-bob.com/')).to.be.rejected;
   });
 
-  it('Should transferable after approve', () => {
-    // TODO
+  it('Should transferable after approve', async () => {
+    const [alice, bob] = await ethers.getSigners();
+
+    const Shadow = await ethers.getContractFactory('ShadowERC721');
+    const shadow = await Shadow.deploy('https://example.com/', alice.address, alice.address);
+    await shadow.deployed();
+
+    await (await shadow.mint(alice.address, 1)).wait();
+    await (await shadow.mint(alice.address, 2)).wait();
+
+    expect(await shadow.balanceOf(alice.address)).to.equals(BigNumber.from(2));
+    expect(await shadow.balanceOf(bob.address)).to.equals(BigNumber.from(0));
+
+    await expect(shadow.connect(bob).transferFrom(alice.address, bob.address, 1)).to.rejectedWith(
+      'is not owner nor approved'
+    );
+
+    await (await shadow.connect(alice).approve(bob.address, 1)).wait();
+    await (await shadow.connect(bob).transferFrom(alice.address, bob.address, 1)).wait();
+
+    expect(await shadow.balanceOf(alice.address)).to.equals(BigNumber.from(1));
+    expect(await shadow.balanceOf(bob.address)).to.equals(BigNumber.from(1));
+
+    await expect(shadow.connect(bob).transferFrom(alice.address, bob.address, 2)).to.rejectedWith(
+      'is not owner nor approved'
+    );
+  });
+
+  it('Should transferable after setApprovalForAll', async () => {
+    const [alice, bob] = await ethers.getSigners();
+
+    const Shadow = await ethers.getContractFactory('ShadowERC721');
+    const shadow = await Shadow.deploy('https://example.com/', alice.address, alice.address);
+    await shadow.deployed();
+
+    await (await shadow.mint(alice.address, 1)).wait();
+    await (await shadow.mint(alice.address, 2)).wait();
+
+    expect(await shadow.balanceOf(alice.address)).to.equals(BigNumber.from(2));
+    expect(await shadow.balanceOf(bob.address)).to.equals(BigNumber.from(0));
+
+    await expect(shadow.connect(bob).transferFrom(alice.address, bob.address, 1)).to.rejectedWith(
+      'is not owner nor approved'
+    );
+
+    await (await shadow.connect(alice).setApprovalForAll(bob.address, true)).wait();
+    await (await shadow.connect(bob).transferFrom(alice.address, bob.address, 1)).wait();
+
+    expect(await shadow.balanceOf(alice.address)).to.equals(BigNumber.from(1));
+    expect(await shadow.balanceOf(bob.address)).to.equals(BigNumber.from(1));
+
+    await (await shadow.connect(bob).transferFrom(alice.address, bob.address, 2)).wait();
+
+    expect(await shadow.balanceOf(alice.address)).to.equals(BigNumber.from(0));
+    expect(await shadow.balanceOf(bob.address)).to.equals(BigNumber.from(2));
   });
 });
