@@ -11,10 +11,15 @@
     "src"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "knex:migrate:list": "cd db && knex migrate:list",
+    "knex:migrate:latest": "cd db && knex migrate:latest",
+    "knex:migrate:down": "cd db && knex migrate:down"
   },
   "dependencies": {
     "@ckb-lumos/base": "^0.17.0-rc10",
-    "@ckb-lumos/codec": "^0.17.0-rc10"
+    "@ckb-lumos/codec": "^0.17.0-rc10",
+    "knex": "^2.1.0",
+    "pg": "^8.7.3"
   }
 }
