@@ -1,9 +1,5 @@
-# IOBridge
-
 ## Quick Start
 
-```sh
-git clone https://github.com/homura/iobridge.git
-cd iobridge
-yarn install
-```
+1. `make`
+2. `docker compose up`
+
