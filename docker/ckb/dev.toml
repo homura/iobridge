@@ -123,8 +123,3 @@ genesis_epoch_length = 1000
 
 [pow]
 func = "Dummy"
-
-[[miner.workers]]
-worker_type = "Dummy"
-delay_type = "Constant"
-value = 1000

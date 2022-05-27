@@ -1,21 +1,21 @@
-version: "3.3"
+version: '3.3'
 services:
   ckb:
-    image: iobridge/ckb-dev:v0.100.0
+    image: iobridge/ckb-dev:v0.103.0
     ports:
-      - "8114:8114"
+      - '8114:8114'
     networks:
       iobridgenet:
         ipv4_address: 10.5.0.11
         aliases:
           - ckb
   ckb-indexer:
-    image: iobridge/ckb-indexer:v0.3.0
+    image: nervos/ckb-indexer:0.3.2
     ports:
-      - "8116:8116"
+      - '8116:8116'
     environment:
       - RUST_LOG=info
-    command: ckb-indexer -s /tmp/ckb-indexer-test -c http://ckb:8114 -l 0.0.0.0:8116
+    command: -s /tmp/ckb-indexer-test -c http://ckb:8114 -l 0.0.0.0:8116
     depends_on:
       - ckb
     networks:
