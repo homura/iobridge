@@ -35,7 +35,7 @@ export type BridgeMessageNotSubmitted = { state: 'NotSubmitted' };
 export type BridgeMessageSubmitted = { state: 'Submitted'; mintNftRecipient: string; signature?: string };
 export type BridgeMessageRecord = BridgeMessageNotSubmitted | BridgeMessageSubmitted;
 
-export type MintTx = { txHash: string; nonce: number; signedTx: unknown; mappedNftId: string };
+export type MintTx = { txHash: string; txNonce: number; signedTx: unknown; mappedNftId: string };
 
 export type MintNotReady = { state: 'NotReady' };
 export type MintReady = { state: 'ReadyToMint'; mappedNftId: string };
