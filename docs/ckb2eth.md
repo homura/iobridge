@@ -20,3 +20,8 @@ stateDiagram-v2
 ## CKB <- Ethereum
 
 TODO
+
+## Terms
+
+- Committed: transaction has committed on BlockChain, but not yet reached the confirmed height
+- Confirmed: transaction has reached the confirmation height
