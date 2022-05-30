@@ -10,7 +10,15 @@
   "scripts": {
     "build": "tsc"
   },
+  "engines": {
+    "node": ">12.0.0"
+  },
   "dependencies": {
-    "@ckb-lumos/codec": "^0.17.0-rc10"
+    "@ckb-lumos/codec": "^0.17.0-rc10",
+    "@ckb-lumos/lumos": "^0.17.0-rc10",
+    "@metamask/eth-sig-util": "^4.0.1"
+  },
+  "devDependencies": {
+    "ethereumjs-util": "^7.1.4"
   }
 }
