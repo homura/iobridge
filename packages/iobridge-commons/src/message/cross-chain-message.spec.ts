@@ -41,13 +41,6 @@ describe('sign personalSign', () => {
       message: JSON.stringify(MOCK_MESSAGE),
     });
     expect(result).true;
-
-    const errorResult = verifyCrossChainMessage({
-      expectedSignerAddress: MOCK_ETH_ADRESS,
-      signature: 'sometext',
-      message: JSON.stringify(MOCK_MESSAGE),
-    });
-    expect(errorResult).false;
   });
 
   it('should validate message', async () => {
@@ -55,5 +48,23 @@ describe('sign personalSign', () => {
     expect(() => validateCrossChainMessage('{}')).to.throw(TxHashTypeError);
     expect(() => validateCrossChainMessage('{"txHash": "test"}')).to.throw(ToAddressTypeError);
     expect(() => validateCrossChainMessage('{"txHash": "test","toAddress": "test"}')).to.not.throw();
+  });
+
+  it('Should verify failed when the message or address is mismatch', async () => {
+    const signature = await signCrossChainMessage(mockEthProvider, MOCK_MESSAGE, MOCK_ETH_ADRESS);
+
+    const addressMismatch = verifyCrossChainMessage({
+      expectedSignerAddress: MOCK_ETH_ADRESS,
+      signature: 'sometext',
+      message: JSON.stringify(MOCK_MESSAGE),
+    });
+    expect(addressMismatch).false;
+
+    const messageMismatch = verifyCrossChainMessage({
+      expectedSignerAddress: MOCK_ETH_ADRESS,
+      signature: signature,
+      message: JSON.stringify('{sometext: true}'),
+    });
+    expect(messageMismatch).false;
   });
 });
