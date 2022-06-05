@@ -1,6 +1,6 @@
 import { Address } from '@ckb-lumos/base';
 import { Ckb2EthStore } from './store';
-import { Ckb2EthRecord } from './record';
+import { BridgeFee, Ckb2EthDeposited } from './record';
 
 export type Log = (...args: unknown[]) => void;
 export type Logger = {
@@ -22,7 +22,7 @@ interface CkbScanner {
   scanCkb2EthRecordByBlockNumber(
     blockNumber: number,
     uncompletedBridgeFeeRecipients: Address[]
-  ): Promise<Ckb2EthRecord[]>;
+  ): Promise<{ confirmedDepositRecords: Ckb2EthDeposited[]; bridgeFeeRecords: BridgeFee[] }>;
 }
 
 export interface ScanCkbAdapter {

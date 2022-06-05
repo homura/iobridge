@@ -1,4 +1,4 @@
-import { Ckb2EthRecord } from './record';
+import { BridgeFee, Ckb2EthDeposited, Ckb2EthRecord } from './record';
 
 export interface Ckb2EthStore {
   /**
@@ -9,9 +9,16 @@ export interface Ckb2EthStore {
   /**
    * insert or update Ethereum records, at meanwhile
    * @param blockNumber
-   * @param records
+   * @param depositedRecords
+   * @param bridgeRecords
    */
-  upsertCkbRecordsInABlock(blockNumber: number, records: Ckb2EthRecord[]): Promise<number>;
+  upsertCkbRecordsInABlock(
+    blockNumber: number,
+    depositedRecords: Ckb2EthDeposited[],
+    bridgeRecords: Omit<BridgeFee, 'neededAmount'>[]
+  ): Promise<void>;
+
+  submitBridgeMessage(txHash: string): Promise<void>;
 
   /**
    * update records' state when mint is committed
@@ -27,15 +34,15 @@ export interface Ckb2EthStore {
 
   /**
    * get a {@see Ckb2EthRecord} by a deposit TxHash, return null if not found
-   * @param txHash
+   * @param depositTxHash
    */
-  findRecordByDepositTxHash(txHash: string): Promise<Ckb2EthRecord | null>;
+  queryRecordsByDepositTxHash(depositTxHash: string): Promise<Ckb2EthRecord[] | null>;
 
   /**
    * get a {@see Ckb2EthRecord} by a redemption TxHash, return null if not found
    * @param sequenceNumber
    */
-  findRecordByDepositSequenceNumber(sequenceNumber: number): Promise<Ckb2EthRecord | null>;
+  queryRecordByDepositSequenceNumber(sequenceNumber: number): Promise<Ckb2EthRecord | null>;
 
   /**
    * each bridge operation needs to be paid some CKB as bridge fee, this method helps to filter uncompleted bridge fee payment

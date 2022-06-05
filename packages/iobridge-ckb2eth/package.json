@@ -14,12 +14,19 @@
     "build": "tsc",
     "knex:migrate:list": "cd db && knex migrate:list",
     "knex:migrate:latest": "cd db && knex migrate:latest",
-    "knex:migrate:down": "cd db && knex migrate:down"
+    "knex:migrate:down": "cd db && knex migrate:down",
+    "generate:entities": "npx @rmp135/sql-ts -c ./devtools/postgre.json"
   },
   "dependencies": {
     "@ckb-lumos/base": "^0.17.0-rc10",
+    "@ckb-lumos/bi": "^0.17.0",
     "@ckb-lumos/codec": "^0.17.0-rc10",
+    "@iobridge/commons": "*",
     "knex": "^2.1.0",
+    "objection": "^3.0.1",
     "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "@rmp135/sql-ts": "^1.13.0"
   }
 }

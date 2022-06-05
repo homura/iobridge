@@ -30,14 +30,17 @@ export async function start(adapter: ScanCkbAdapter): Promise<void> {
     // TODO catch and retry here
     const bridgeFeeRecipients = await store.getUncompletedBridgeFeePaymentRecipients();
     // TODO catch and retry here
-    const records = await scanner.scanCkb2EthRecordByBlockNumber(currentBlockNumber, bridgeFeeRecipients);
+    const { confirmedDepositRecords, bridgeFeeRecords } = await scanner.scanCkb2EthRecordByBlockNumber(
+      currentBlockNumber,
+      bridgeFeeRecipients
+    );
 
     logger.info(`UncompletedBridgeFeePaymentRecipients`, bridgeFeeRecipients);
-    logger.info(`scanned Ckb2EthRecord in block ${currentBlockNumber}`, records);
+    logger.info(`scanned Ckb2EthRecord in block ${currentBlockNumber}`, confirmedDepositRecords, bridgeFeeRecords);
 
     // TODO catch and retry in a limited number of times here
     await store
-      .upsertCkbRecordsInABlock(currentBlockNumber, records)
+      .upsertCkbRecordsInABlock(currentBlockNumber, confirmedDepositRecords, bridgeFeeRecords)
       .catch((e) => logger.faultAndNotify(`the bridge store may crashed:`, e));
 
     scannedBlockNumber = currentBlockNumber;

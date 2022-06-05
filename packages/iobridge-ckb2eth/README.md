@@ -12,4 +12,5 @@ yarn run knex:migrate:list
 # migrate to latest schema
 # yarn run knex:migrate:latest
 # yarn run knex:migrate:down
+# yarn run generate:entities
 ```

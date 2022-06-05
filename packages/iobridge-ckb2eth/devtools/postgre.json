@@ -1,0 +1,9 @@
+{
+  "client": "pg",
+  "connection": "postgresql://iobridge:123456@localhost:5432/iobridge",
+  "columnNameCasing": "camel",
+  "tableNameCasing": "pascal",
+  "filename": "DatabaseModel",
+  "tables": ["public.ckb2eth", "public.ckb2eth_bridge_fee"],
+  "folder": "./src/store/generated"
+}
